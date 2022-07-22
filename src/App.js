@@ -6,13 +6,11 @@ function App() {
 
   const [timeOffset, setTimeOffset] = useState(0);
 
-  const loadTime = async () => {
+  const loadTime = () => {
 
-    const timeData = await axios.get("http://worldtimeapi.org/api/timezone/America/Detroit");
-
-    console.log(timeData);
-
-    setTimeOffset(timeData.data.unixtime);
+    axios.get("http://worldtimeapi.org/api/timezone/America/Detroit").then(response => {
+      setTimeOffset(response.data.unixtime);
+    });
   }
 
   loadTime();
