@@ -13,10 +13,15 @@ const NumberPair = (props) => {
     const nextDigits = processNumber(props.nextNumber);
 
     return(
-        <div className="numberPair--wrapper__main">
-            <Numbers currentNumber={currentDigits[0]} nextNumber={nextDigits[0]}></Numbers>
-            <div className="digit--spacer"></div>
-            <Numbers currentNumber={currentDigits[1]} nextNumber={nextDigits[1]}></Numbers>
+        <div className="numberPair--container">
+            <div className="numberPair--wrapper__main">
+                <Numbers currentNumber={currentDigits[0]} nextNumber={nextDigits[0]}></Numbers>
+                <div className="digit--spacer"></div>
+                <Numbers currentNumber={currentDigits[1]} nextNumber={nextDigits[1]}></Numbers>
+            </div>
+            <div>
+                <h2 className="pairName">{props.groupName}</h2>
+            </div>
         </div>
     );
 }

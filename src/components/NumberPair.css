@@ -1,7 +1,19 @@
+.numberPair--container{
+    display: flex;
+    flex-direction: column;
+}
 .numberPair--wrapper__main{
     display: flex;
     flex-direction: row;
 }
 .digit--spacer{
     width: 5px;
+}
+.pairName{
+    font-family:"franklin-gothic-urw-cond";
+    font-size: 20px;
+    margin-top: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 100;
 }
