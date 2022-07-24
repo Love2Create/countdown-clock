@@ -67,7 +67,7 @@ const CountdownClock = () => {
                 </div>
                 <NumberPair currentNumber={secondData} nextNumber={nextSecondData} groupName={groupNames[3]}></NumberPair>
             </div>
-            <button onClick={testHandler}>Hit me</button>
+            {/* <button onClick={testHandler}>Hit me</button> */}
         </div>
     );
 }

@@ -63,5 +63,7 @@ body {
 
 .clock--wrapper__main{
   margin: 60px auto;
+  justify-content: center;
+  align-content: center;
 }
 
