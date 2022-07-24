@@ -1,4 +1,90 @@
 
+@keyframes topRotation{
+    0%{
+        transform-origin: center bottom;
+        transform: scale(1,1) rotateX(0deg) perspective(800px);
+        top: 0;
+    }
+    50%{
+
+        transform-origin: center bottom;
+        transform: scale(1,1) rotateX(90deg) perspective(800px);
+        top: 0;
+    }
+    50.001%{
+        transform-origin: center top;
+        transform: scale(1,-1) rotateX(90deg) perspective(800px);
+        top: 50%;
+    }
+    100%{
+        transform-origin: center top;
+        transform: scale(1,-1) rotateX(180deg) perspective(800px);
+        top: 50%;
+    }
+}
+
+@keyframes topRotationNextNumber{
+    0%{
+        transform-origin: center bottom;
+        transform: scale(1,1) rotateX(0deg) perspective(800px);
+        top: 0;
+        opacity: 0;
+    }
+    50%{
+
+        transform-origin: center bottom;
+        transform: scale(1,1) rotateX(90deg) perspective(800px);
+        top: 0;
+        opacity: 0;
+    }
+    50.001%{
+        transform-origin: center top;
+        transform: scale(1,-1) rotateX(90deg) perspective(800px);
+        top: 50%;
+        opacity: 1;
+    }
+    100%{
+        transform-origin: center top;
+        transform: scale(1,-1) rotateX(180deg) perspective(800px);
+        top: 50%;
+        opacity: 1;
+    }
+}
+
+@keyframes switch2bottomHalf{
+    0%{
+        margin-top: 0%;
+    }
+    50%{
+        margin-top: 0%;
+    }
+    50.001%{
+        margin-top: -85%;
+    }
+    100%{
+        margin-top: -85%;
+    }
+}
+
+@keyframes shading{
+    0%{
+       background-color: black;
+       opacity: 0; 
+    }
+    50%{
+        background-color: black;
+        opacity: 0.5; 
+    }
+    50.001%{
+        background-color: white;
+        opacity: 0.5; 
+    }
+    100%{
+        background-color: white;
+        opacity: 0; 
+    }
+}
+
 .number-wrapper__individual_digit_main{
     width: 44px;
     height: 80px;
@@ -6,38 +92,70 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    background-color: #4a2e1c;
+    border-radius: 4px;
+    padding-bottom: 5px;
+    border-radius: 5px;;
+    box-shadow: 2px 2px 3px rgba(34, 12, 12, 0.25);
 }
 .numbers--group__wrapper{
     width: 100%;
     height: 100%;
-    background-color: #4a2e1c;
-    border-radius: 4px;
     display: flex;
     flex-direction: column;
     position: relative;
     align-items: center;
-    padding-top: 2px;
 }
 .numbers--top{
     width: 100%;
     height: 50%;
     overflow: hidden;
+    position: absolute;
+    top: 0;
+    background-color: #4a2e1c;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
 }
 .numbers--top p{
+    width: 100%;
     font-family:"franklin-gothic-urw-cond";
     font-size: 60px;
     font-weight: 700;
     text-align: center;
     color: white;
+    background-color: #4a2e1c;
+}
+.updating .flipper{
+    animation-name: topRotation;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+.updating .flipper.nextValue{
+    animation-name: topRotationNextNumber;
+}
+.updating .flipper p{
+    animation-name: switch2bottomHalf;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+.updating .flipper::after{
+    display: block;
+    content:"";
     position: absolute;
-    width: 100%;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    animation-name: shading;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
 }
 .numbers--bottom{
     width: 100%;
-    height: 50%;
-    overflow: hidden;
-    position: absolute;
-    bottom: 0;
+    height: 100%;
 }
 .numbers--bottom p{
     font-family:"franklin-gothic-urw-cond";
@@ -46,59 +164,4 @@
     text-align: center;
     color: white;
     width: 100%;
-    position: absolute;
-    bottom: 5px;
 }
-
-.updating{
-    background-color: red;
-}
-
-
-/* Previous Styles */
-/* .numbers--group__wrapper{
-    display: flex;
-    position: relative;
-    width: 42px;
-    height: 90px;
-    margin: 0 auto;
-}
-.numbers--top__wrapper{
-    width: 100%;
-    height: 50%;
-    overflow: hidden;
-    position: absolute;
-    top:0;
-    left:0;
-}
-.numbers--number{
-    position: absolute;
-    display: flex;
-    font-family:"franklin-gothic-urw-cond";
-    font-size: 60px;
-    font-weight: 700;
-    color: white;
-    background-color: #4a2e1c;
-    padding: 6px;
-    align-items: center;
-    justify-content: center;  
-}
-.numbers--bottom__wrapper{
-    width: 100%;
-    height: 50%;
-    overflow: hidden;
-    position: absolute;
-    top: 45px;
-    left: 0;
-    
-}
-.number--bottom{
-    position: absolute;
-    bottom:3px;
-    border-radius: 0 0 5px 5px;
-}
-.number--top{
-    position: absolute;
-    top:3px;
-    border-radius: 5px 5px 0 0 ;
-} */
