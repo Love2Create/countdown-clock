@@ -1,23 +1,12 @@
-import react from "react";
-import { useState } from "react";
-import axios from "axios";
+// import Numbers from "./components/Numbers";
+// import NumberPair from "./components/NumberPair";
+import CountdownClock from "./components/CountdownClock";
 
 function App() {
 
-  const [timeOffset, setTimeOffset] = useState(0);
-
-  const loadTime = () => {
-
-    axios.get("http://worldtimeapi.org/api/timezone/America/Detroit").then(response => {
-      setTimeOffset(response.data.unixtime);
-    });
-  }
-
-  loadTime();
-
   return (
-    <div>
-      <h2>{timeOffset}</h2>
+    <div className="clock--wrapper__main">
+      <CountdownClock></CountdownClock>
     </div>
   );
 }

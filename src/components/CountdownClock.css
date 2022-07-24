@@ -1,0 +1,23 @@
+.clock--wrapper__main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.day--spacer{
+    width: 30px;
+}
+.time--spacer{
+    width: 18px;
+    height: 100%;
+}
+.time--spacer p{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family:"clarendon-urw";
+    font-size: 40px;
+    font-weight: 700;
+    color: #4a2e1c;
+    padding-bottom: 10px;
+    padding-right: 2px;
+}
