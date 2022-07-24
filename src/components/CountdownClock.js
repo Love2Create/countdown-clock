@@ -14,18 +14,31 @@ const CountdownClock = () => {
     const [nextSecondData, setNextSecondData] = useState(0);
 
     const groupNames = ['days', 'hours', 'minutes', 'seconds'];
+    const endDate = new Date('08/03/2022');
+    // const endDate = new Date('08/03/2022 11:00:00');
+    const timeOffset = 0;
 
     const getDateData = async() => {
-        const newDateData = new Date();
-        console.log(newDateData);
+        const currentDateData = new Date(new Date().getTime()+timeOffset);
+        const dateDifference = (endDate.getTime()+timeOffset)-(currentDateData.getTime());
+        const newDateData = new Date(dateDifference);
+        const totalDays = Math.ceil(dateDifference / (1000 * 3600 * 24));
+
+        // console.log(newDateData);
         const nextSecond = newDateData.getSeconds();
         setNextSecondData(nextSecond);
         const nextMinute = newDateData.getMinutes();
         setNextMinuteData(nextMinute);
+        const nextHour = newDateData.getHours();
+        setNextHourData(nextHour);
+        setNextDayData(totalDays);
+
         await new Promise(resolve => setTimeout(resolve, 500));
+
         setSecondData(nextSecond);
         setMinuteData(nextMinute);
-        
+        setHourData(nextHour);
+        setDayData(totalDays);
     }
 
     setInterval( ()=> {

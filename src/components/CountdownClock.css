@@ -14,10 +14,10 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    font-family:"franklin-gothic-urw-cond";
+    font-family:"clarendon-urw";
     font-size: 40px;
     font-weight: 700;
     color: #4a2e1c;
     margin-top: 7px;
-    padding-right: 2px;
+    padding-right: 1px;
 }
