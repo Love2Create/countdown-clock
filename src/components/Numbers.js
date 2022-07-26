@@ -8,16 +8,16 @@ const Numbers = (props) => {
                 <div className="numbers--bottom">
                     <p>{props.currentNumber}</p>
                 </div>
-                <div className="numbers--top">
+                <div className="numbers--top" aria-hidden="true">
                     <p>{props.nextNumber}</p>
                 </div>
-                <div className="numbers--top">
+                <div className="numbers--top" aria-hidden="true">
                     <p>{props.nextNumber}</p>
                 </div>
-                <div className="numbers--top flipper">
+                <div className="numbers--top flipper" aria-hidden="true">
                     <p>{props.currentNumber}</p>
                 </div>
-                <div className="numbers--top flipper nextValue">
+                <div className="numbers--top flipper nextValue" aria-hidden="true">
                     <p>{props.nextNumber}</p>
                 </div>
             </div>

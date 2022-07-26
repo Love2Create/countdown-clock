@@ -23,8 +23,7 @@ const CountdownClock = () => {
 
 
     const groupNames = ['days', 'hours', 'minutes', 'seconds'];
-    // const rawEndDate = new Date('08/03/2022 08:03:00');
-    const rawEndDate = new Date('07/25/2022 22:00:00');
+    const rawEndDate = new Date('08/03/2022 09:03:00');
     const endDate = new Date(rawEndDate.getTime()+timeOffset);
 
     // update useState
@@ -32,7 +31,7 @@ const CountdownClock = () => {
         const currentDateData = new Date(new Date().getTime()+timeOffset);
         const dateDifference = (endDate.getTime()+timeOffset)-(currentDateData.getTime());
         const newDateData = new Date(dateDifference);
-        const totalDays = Math.ceil(dateDifference / (1000 * 3600 * 24));
+        const totalDays = Math.floor(dateDifference / (1000 * 3600 * 24));
 
         const nextSecond = newDateData.getSeconds();
         setNextSecondData(nextSecond);
