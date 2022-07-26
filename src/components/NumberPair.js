@@ -12,6 +12,8 @@ const NumberPair = (props) => {
     const currentDigits = processNumber(props.currentNumber);
     const nextDigits = processNumber(props.nextNumber);
 
+    // console.log(`${props.nextNumber} ${props.groupName}`);
+
     return(
         <div className="numberPair--container">
             <div className="numberPair--wrapper__main">

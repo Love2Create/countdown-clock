@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const CountdownClock = () => {
 
+    
     const [dayData, setDayData] = useState(0);
     const [hourData, setHourData] = useState(0);
     const [minuteData, setMinuteData] = useState(0);
@@ -13,18 +14,26 @@ const CountdownClock = () => {
     const [nextMinuteData, setNextMinuteData] = useState(0);
     const [nextSecondData, setNextSecondData] = useState(0);
 
-    const groupNames = ['days', 'hours', 'minutes', 'seconds'];
-    const endDate = new Date('08/03/2022');
-    // const endDate = new Date('08/03/2022 11:00:00');
-    const timeOffset = 0;
 
+    // calculate time offset
+    var d = new Date();
+    const utcDateString = `${d.getUTCMonth()+1}/${d.getUTCDate()}/${d.getUTCFullYear()} ${d.getUTCHours()}:${d.getUTCMinutes()}:${d.getUTCSeconds()}`;
+    const utcDate = new Date(utcDateString);
+    const timeOffset = utcDate.getTime() - new Date().getTime();
+
+
+    const groupNames = ['days', 'hours', 'minutes', 'seconds'];
+    // const rawEndDate = new Date('08/03/2022 08:03:00');
+    const rawEndDate = new Date('07/25/2022 22:00:00');
+    const endDate = new Date(rawEndDate.getTime()+timeOffset);
+
+    // update useState
     const getDateData = async() => {
         const currentDateData = new Date(new Date().getTime()+timeOffset);
         const dateDifference = (endDate.getTime()+timeOffset)-(currentDateData.getTime());
         const newDateData = new Date(dateDifference);
         const totalDays = Math.ceil(dateDifference / (1000 * 3600 * 24));
 
-        // console.log(newDateData);
         const nextSecond = newDateData.getSeconds();
         setNextSecondData(nextSecond);
         const nextMinute = newDateData.getMinutes();
@@ -45,13 +54,6 @@ const CountdownClock = () => {
         getDateData();
     }, 1000);
 
-    const testHandler = async () => {
-        const nextVal = dayData+1;
-        setNextDayData(nextVal);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setDayData(nextVal);
-    }
-
     return(
         <div>
             <div className="clock--wrapper__main">
@@ -67,7 +69,6 @@ const CountdownClock = () => {
                 </div>
                 <NumberPair currentNumber={secondData} nextNumber={nextSecondData} groupName={groupNames[3]}></NumberPair>
             </div>
-            {/* <button onClick={testHandler}>Hit me</button> */}
         </div>
     );
 }

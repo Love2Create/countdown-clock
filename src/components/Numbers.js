@@ -8,7 +8,6 @@ const Numbers = (props) => {
                 <div className="numbers--bottom">
                     <p>{props.currentNumber}</p>
                 </div>
-
                 <div className="numbers--top">
                     <p>{props.nextNumber}</p>
                 </div>
@@ -21,11 +20,9 @@ const Numbers = (props) => {
                 <div className="numbers--top flipper nextValue">
                     <p>{props.nextNumber}</p>
                 </div>
-
             </div>
         </div>
     );
-
 }
 
 export default Numbers;
