@@ -21,3 +21,14 @@
     margin-top: 7px;
     padding-right: 1px;
 }
+@media only screen and (max-width: 768px) {
+    .clock--wrapper__main{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scale(.75);
+    }
+    .clock--shell--main{
+        width: 85vw;
+        height: 100px;
+    }
+}

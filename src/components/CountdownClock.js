@@ -55,7 +55,7 @@ const CountdownClock = () => {
         const dateStats = getDateStats(endDate);
         const valueModifier = dateStats.days < 0 ? 0 : 1;
 
-        console.log(dateStats);
+        // console.log(dateStats);
 
 
 
@@ -78,7 +78,7 @@ const CountdownClock = () => {
     }, 1000);
 
     return(
-        <div>
+        <div className="clock--shell--main">
             <div className="clock--wrapper__main">
                 <NumberPair currentNumber={dayData} nextNumber={nextDayData} groupName={groupNames[0]}></NumberPair>
                 <div className="day--spacer"></div>

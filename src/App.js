@@ -1,11 +1,20 @@
-// import Numbers from "./components/Numbers";
-// import NumberPair from "./components/NumberPair";
 import CountdownClock from "./components/CountdownClock";
+import { useState } from 'react';
 
 function App() {
 
+  const baseWidth = 430;
+
+  const [clockScale, setClockScale] = useState(1);
+
+  document.addEventListener('resize', () => {
+    console.log('resizing');
+  });
+
+  console.log('resizing');
+  
   return (
-      <div className="clock--wrapper__main">
+      <div>
         <CountdownClock></CountdownClock>
       </div>
   );
