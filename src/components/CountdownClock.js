@@ -14,22 +14,18 @@ const CountdownClock = () => {
     const [nextMinuteData, setNextMinuteData] = useState(0);
     const [nextSecondData, setNextSecondData] = useState(0);
 
-
-    // calculate time offset
-    var d = new Date();
-    const utcDateString = `${d.getUTCMonth()+1}/${d.getUTCDate()}/${d.getUTCFullYear()} ${d.getUTCHours()}:${d.getUTCMinutes()}:${d.getUTCSeconds()}`;
-    const utcDate = new Date(utcDateString);
-    const timeOffset = utcDate.getTime() - new Date().getTime();
-
-
     const groupNames = ['days', 'hours', 'minutes', 'seconds'];
-    const rawEndDate = new Date('08/03/2022 09:03:00');
-    // const rawEndDate = new Date('07/26/2022 10:12:00');
-    const endDate = new Date(rawEndDate.getTime()+timeOffset);
+
+    const endDatString = new Date('08-03-2022 08:03:00').toUTCString();
+    const endDate = new Date(endDatString).getTime();
 
 
     const getDateStats = (end) => {
-        const currentDateData = new Date(new Date().getTime()+timeOffset);
+
+        const date = new Date();
+        const startDateString = date.toUTCString();
+
+        const currentDateData = new Date(startDateString).getTime();
         // get total seconds between the times
         let delta = (end - currentDateData) / 1000;
 
@@ -56,45 +52,24 @@ const CountdownClock = () => {
 
     // update useState
     const getDateData = async() => {
-        const currentDateData = new Date(new Date().getTime()+timeOffset);
-        const dateDifference = (endDate.getTime()+timeOffset)-(currentDateData.getTime());
         const dateStats = getDateStats(endDate);
         const valueModifier = dateStats.days < 0 ? 0 : 1;
 
         console.log(dateStats);
 
 
-        // const nextSecond = newDateData.getSeconds()*valueModifier;
+
         setNextSecondData(dateStats.seconds * valueModifier);
-        // const nextMinute = newDateData.getMinutes()*valueModifier;
         setNextMinuteData(dateStats.minutes * valueModifier);
-        // const nextHour = newDateData.getHours()*valueModifier;
         setNextHourData(dateStats.hours * valueModifier);
         setNextDayData(dateStats.days * valueModifier);
 
-        // const newDateData = new Date(dateDifference);
-        // const totalDays = Math.floor(dateDifference / (1000 * 3600 * 24))*valueModifier;
-
-
-
-        // const nextSecond = newDateData.getSeconds()*valueModifier;
-        // setNextSecondData(nextSecond);
-        // const nextMinute = newDateData.getMinutes()*valueModifier;
-        // setNextMinuteData(nextMinute);
-        // const nextHour = newDateData.getHours()*valueModifier;
-        // setNextHourData(nextHour);
-        // setNextDayData(totalDays);
-
         await new Promise(resolve => setTimeout(resolve, 490));
-        const nextDateStats = getDateStats(endDate);
         setSecondData(dateStats.seconds * valueModifier);
         setMinuteData(dateStats.minutes * valueModifier);
         setHourData(dateStats.hours * valueModifier);
         setDayData(dateStats.days * valueModifier);
-        // setSecondData(nextSecond);
-        // setMinuteData(nextMinute);
-        // setHourData(nextHour);
-        // setDayData(totalDays);
+
 
     }
 
